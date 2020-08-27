@@ -49,17 +49,7 @@ const ExpenseForm = (props) => {
   };
   const onAmountChange = (e) => {
     const amount = e.target.value;
-    if (!amount || amount.match(/^\d{1,}(\.\d{0,2})?$/)) {
-      // regex101.com
-      //we no longer allow just a decimal number
-      //^-forces regex to start with a number
-      //\d-matches a digit(0-9)
-      // {1,}-low end we have 1 and high end we have infinity, we are forcing a number to start the expression
-      //()?-optional group to check if a decimal no is used, decimal no is optional
-      //\.\d{0,2}-
-      //\. - a decimal
-      //\d{0,2}-accepts two digits
-      //$-regex ends here, no other characters
+    if (!amount || amount.match(/^\d{1,}(\.\d{0,2})?$/)) {     
       setAmount(amount);
     }
   };
@@ -98,33 +88,14 @@ const ExpenseForm = (props) => {
           value={amount}
           onChange={onAmountChange}
         />
-        {/* date */}
-        {/* <SingleDatePicker 
-        date={setCreatedAt}
-        onDateChange={onDateChange}
-        focussed={calendarFocussed}
-        onFocusChange={onFocusChange}
-        /> */}
+        {/* date */}      
         {/* onchange we get the date as a parameter and we set the date to state */}
         <Datepicker
           placeholderText="date"
           selected={selectedDate}
-          onChange={(date) => setSelectedDate(date)}
-          // we can pass the required date format as a string
-          dateFormat="dd/MM/yyyy"
-          // using minDate prop we can specify the minimum starting date
-          //by default it uses current date
-          //to set specific date we can pass a string
-          // (i.e.)minDate={new Date('03/03/2020')}
-          // minDate={new Date("03/03/2020")}
-          // using maxDate prop we can specify the maximum ending date
-          // maxDate={new Date()}
-          // using filterDate we can filter specific dates (eg) no saturdays
-          filterDate={(date) => date.getDay() !== 6 && date.getDay() !== 0}
-          // using isClearable prop the selected date can be cleared
-          isClearable
-          // we can use the showYearDropdown and scrollableMonthYearDropdown
-          // to display a year dropdown
+          onChange={(date) => setSelectedDate(date)}         
+          dateFormat="dd/MM/yyyy"         
+          isClearable        
           showYearDropdown
           scrollableMonthYearDropdown
         />
