@@ -19,11 +19,12 @@
     "redux": "^4.0.5",
     "uuid": "^8.2.0"
   },
-  "scripts": {
-    "start": "react-scripts start",
+  "scripts": {    
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "start":"node server/server.js",
+    "heroku-postbuild":"npm run build"
   },
   "plugins": [
     "transform-object-rest-spread"
